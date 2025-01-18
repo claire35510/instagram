@@ -1,8 +1,6 @@
 {
   "name": "instagram-widget",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -13,6 +11,7 @@
   },
   "devDependencies": {
     "@sveltejs/vite-plugin-svelte": "^2.0.0",
+    "esbuild": "^0.24.2",
     "vite": "^4.0.0"
   }
 }
