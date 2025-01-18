@@ -1,18 +1,12 @@
 <script>
-    let posts = [
-        { image: "https://images.pexels.com/photos/3910065/pexels-photo-3910065.jpeg" },
-        { image: "https://as1.ftcdn.net/jpg/05/59/26/68/1000_F_559266834_5AB7JDKaGhnjdPZ5ogBKmU3NHk0kidpk.jpg" },
-        { image: "https://images.pexels.com/photos/3910065/pexels-photo-3910065.jpeg" },
-        { image: "https://images.pexels.com/photos/3910065/pexels-photo-3910065.jpeg" },
-        { image: "https://images.pexels.com/photos/3910065/pexels-photo-3910065.jpeg" },
-        { image: "https://images.pexels.com/photos/3910065/pexels-photo-3910065.jpeg" },
-        { image: "https://images.pexels.com/photos/3910065/pexels-photo-3910065.jpeg" },
-        { image: "https://images.pexels.com/photos/3910065/pexels-photo-3910065.jpeg" },
-        { image: "https://images.pexels.com/photos/3910065/pexels-photo-3910065.jpeg" },
-        { image: "https://images.pexels.com/photos/3910065/pexels-photo-3910065.jpeg" },
-        { image: "https://images.pexels.com/photos/3910065/pexels-photo-3910065.jpeg" },
-        { image: "https://images.pexels.com/photos/3910065/pexels-photo-3910065.jpeg" }
-    ];
+    let posts = [];
+
+    async function fetchPosts() {
+        const response = await fetch('/.netlify/functions/update-links');
+        posts = await response.json();
+    }
+
+    fetchPosts(); // Appelle l'API au chargement
 </script>
 
 <main>
