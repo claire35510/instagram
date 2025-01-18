@@ -1,17 +1,19 @@
-let posts = []; // Tableau pour stocker les liens dynamiques
+let posts = []; // Stocker les liens d'images
 
 exports.handler = async (event) => {
     if (event.httpMethod === "POST") {
         try {
-            // Parse le corps de la requête pour récupérer les nouveaux liens
+            // Récupérer les données envoyées par le client
             const body = JSON.parse(event.body);
-            if (Array.isArray(body.posts)) {
-                posts = body.posts; // Met à jour les liens d'images
+
+            // Vérifier que les données sont bien au format attendu
+            if (body[0]?.tab && Array.isArray(body[0].tab)) {
+                posts = body[0].tab; // Mettre à jour les images
             }
 
             return {
                 statusCode: 200,
-                body: JSON.stringify({ message: "Links updated successfully!" }),
+                body: JSON.stringify({ message: "Images updated successfully!" }),
             };
         } catch (error) {
             return {
@@ -21,7 +23,7 @@ exports.handler = async (event) => {
         }
     }
 
-    // Si la méthode est GET, retourne les liens actuels
+    // Retourner les images via une requête GET
     if (event.httpMethod === "GET") {
         return {
             statusCode: 200,
